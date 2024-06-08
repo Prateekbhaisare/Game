@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: red;
+    overflow: hidden;
+}
+
+.gameContainer{
+    background-image: url('background.jpg');
+    background-repeat: no-repeat;
+    background-size: 200vh 51vw;
+    width: 100%;
+    height: 100vh;
+}
+
+.boy{
+    background-image: url('walkingBoyGif.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 135px;
+    height: 150px;
+    position: absolute;
+    bottom: 80px;
+    left: 90px;
+}
+
+.obstacle{
+    background-image: url('tigergif.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 250px;
+    height: 180px;
+    position: absolute;
+    bottom: 60px;
+    right: 90px;
+}
+
+.animatedBoy{
+    animation: boy 0.7s linear;
+}
+
+.obstacleAni{
+    animation: obstacleAni 2s linear infinite;
+}
+
+.gameOver{
+    color: white;
+    position: relative;
+    top: 86px;
+    font-size: 52px;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+#scoreCont{
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    right: 45px;
+    top: 31px;
+    border: 3px solid black;
+    padding: 10px;
+    font-family: sans-serif;
+    border-radius: 10px;
+}
+
+@keyframes boy{
+    0%{
+        bottom: 0;
+    }
+    50%{
+        bottom: 420px;
+    }
+    100%{
+        bottom: 0;
+    }
+}
+
+@keyframes obstacleAni{
+    0%{
+        left: 100vw;
+    }
+    100%{
+        left: -10vw;
+    }
+}
