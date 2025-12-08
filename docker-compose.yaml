@@ -1,0 +1,7 @@
+version: '3'
+services:
+  mygameapp:
+    image: mygame:06
+    # ports:
+    #   - 8080:80
+    build: .
