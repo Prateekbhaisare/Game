@@ -3,5 +3,6 @@ services:
   mygameapp:
     image: mygame:06
     ports:
-      - 5173:80
+      - 80:80
     build: .
+    restart: unless-stopped
