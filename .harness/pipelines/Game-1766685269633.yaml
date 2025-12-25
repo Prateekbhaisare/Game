@@ -10,26 +10,65 @@ pipeline:
         connectorRef: account.Github
         repoName: Prateekbhaisare/Game
   stages:
-    - stage:
-        identifier: build
-        name: build
-        spec:
-          caching:
-            enabled: true
-          cloneCodebase: true
-          execution:
-            steps:
-              - step:
-                  identifier: echo
-                  name: echo
-                  spec:
-                    command: echo hello world
-                  timeout: ""
-                  type: Run
-          platform:
-            arch: Amd64
-            os: Linux
-          runtime:
-            spec: {}
-            type: Docker
-        type: CI
+    - parallel:
+        - stage:
+            identifier: build
+            name: build
+            spec:
+              caching:
+                enabled: true
+              cloneCodebase: true
+              execution:
+                steps:
+                  - step:
+                      identifier: echo
+                      name: echo
+                      spec:
+                        command: echo hello world
+                      timeout: ""
+                      type: Run
+              platform:
+                arch: Amd64
+                os: Linux
+              runtime:
+                spec: {}
+                type: Docker
+            type: CI
+        - stage:
+            name: print
+            identifier: print
+            description: ""
+            type: CI
+            spec:
+              cloneCodebase: true
+              caching:
+                enabled: true
+                override: true
+              buildIntelligence:
+                enabled: true
+              platform:
+                arch: Amd64
+                os: Linux
+              runtime:
+                spec: {}
+                type: Docker
+              execution:
+                steps:
+                  - step:
+                      type: Run
+                      name: Run_1
+                      identifier: Run_1
+                      spec:
+                        shell: Sh
+                        command: echo "build is running"
+                  - step:
+                      type: GitClone
+                      name: GitClone_1
+                      identifier: GitClone_1
+                      spec:
+                        connectorRef: account.Github
+                        repoName: https://github.com/Prateekbhaisare/Game.git
+                        build:
+                          type: branch
+                          spec:
+                            branch: main
