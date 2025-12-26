@@ -27,9 +27,13 @@ pipeline:
                   timeout: ""
                   type: Run
           platform:
-            arch: Amd64
             os: Linux
+            arch: Amd64
+            selectors:
+              - docker-delegate
           runtime:
-            spec: {}
             type: Docker
+            spec:
+              harnessImageConnectorRef: account.harnessImage
         type: CI
+        description: ""
