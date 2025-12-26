@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_Prateekbhaisare_Game_1766737235126-pr-trigger-input-set
+  identifier: Build_Prateekbhaisare_Game_1766737235126prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_Prateekbhaisare_Game_1766737235126
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
