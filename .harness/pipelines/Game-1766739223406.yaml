@@ -3,12 +3,6 @@ pipeline:
   name: Build Game
   orgIdentifier: default
   projectIdentifier: default_project
-  properties:
-    ci:
-      codebase:
-        build: <+input>
-        connectorRef: account.Github
-        repoName: Prateekbhaisare/Game
   stages:
     - stage:
         identifier: build
@@ -16,7 +10,8 @@ pipeline:
         spec:
           caching:
             enabled: true
-          cloneCodebase: true
+            paths: []
+          cloneCodebase: false
           execution:
             steps:
               - step:
@@ -27,9 +22,15 @@ pipeline:
                   timeout: ""
                   type: Run
           platform:
-            arch: Amd64
             os: Linux
+            arch: Amd64
           runtime:
-            spec: {}
             type: Docker
+            spec: {}
+          sharedPaths:
+            - /var/run
+            - /var/lib/docker
+          buildIntelligence:
+            enabled: false
         type: CI
+        description: ""
