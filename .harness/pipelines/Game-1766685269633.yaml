@@ -24,15 +24,16 @@ pipeline:
                       identifier: echo
                       name: echo
                       spec:
+                        shell: Sh
                         command: echo hello world
-                      timeout: ""
+                      timeout: 10m
                       type: Run
               platform:
                 arch: Amd64
                 os: Linux
               runtime:
                 spec: {}
-                type: Docker
+                type: Cloud
             type: CI
         - stage:
             name: print
@@ -43,15 +44,12 @@ pipeline:
               cloneCodebase: true
               caching:
                 enabled: true
-                override: true
-              buildIntelligence:
-                enabled: true
               platform:
                 arch: Amd64
                 os: Linux
               runtime:
                 spec: {}
-                type: Docker
+                type: Cloud
               execution:
                 steps:
                   - step:
@@ -61,14 +59,4 @@ pipeline:
                       spec:
                         shell: Sh
                         command: echo "build is running"
-                  - step:
-                      type: GitClone
-                      name: GitClone_1
-                      identifier: GitClone_1
-                      spec:
-                        connectorRef: account.Github
-                        repoName: https://github.com/Prateekbhaisare/Game.git
-                        build:
-                          type: branch
-                          spec:
-                            branch: main
+                      timeout: 10m
