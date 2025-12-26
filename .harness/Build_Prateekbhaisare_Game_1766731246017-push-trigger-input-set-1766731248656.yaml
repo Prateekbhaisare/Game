@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_Prateekbhaisare_Game_1766731246017-push-trigger-input-set
+  identifier: Build_Prateekbhaisare_Game_1766731246017pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: default_project
+  pipeline:
+    identifier: Build_Prateekbhaisare_Game_1766731246017
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
