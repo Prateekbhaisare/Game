@@ -13,23 +13,26 @@ pipeline:
     - stage:
         identifier: build
         name: build
+        type: CI
         spec:
           caching:
             enabled: true
           cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+            selectors:
+              - docker-delegate
+              - linux-amd64
+          runtime:
+            type: Docker
+            spec:
+              harnessImageConnectorRef: account.harnessImage
           execution:
             steps:
               - step:
                   identifier: echo
                   name: echo
-                  spec:
-                    command: echo hello world
-                  timeout: ""
                   type: Run
-          platform:
-            arch: Amd64
-            os: Linux
-          runtime:
-            spec: {}
-            type: Docker
-        type: CI
+                  spec:
+                    command: echo "hello world"
